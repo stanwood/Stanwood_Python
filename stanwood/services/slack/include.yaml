@@ -1,0 +1,4 @@
+handlers:
+- url: /_ah/queue/slack
+  script: stanwood.services.slack.queue.app
+  login: admin
