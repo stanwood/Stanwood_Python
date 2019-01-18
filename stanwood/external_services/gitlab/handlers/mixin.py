@@ -2,10 +2,8 @@ import abc
 
 import gitlab
 
-from slack_utils.gae.webapp2_utils import SlackMixin
 
-
-class GitlabMixin(SlackMixin):
+class GitlabMixin(object):
 
     @abc.abstractproperty
     def gitlab(self):
