@@ -1,0 +1,4 @@
+handlers:
+- url: /_ah/queue/fcm
+  script: stanwood.services.fcm.queue.app
+  login: admin
