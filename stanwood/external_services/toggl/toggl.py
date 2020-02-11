@@ -144,8 +144,11 @@ class Toggl(object):
 
     def get_project_by_prefix(self, project_name_prefix):
         projects = self._fetch(self.API_URL + '/workspaces/{}/projects'.format(self.workspace))
+        projects_exact_match = filter(lambda project: project['name'] == project_name_prefix, projects)
+        projects_starting_with = filter(lambda project: project['name'].startswith(project_name_prefix + ' '), projects)
+
         try:
-            return filter(lambda project: project['name'].startswith(project_name_prefix+' '), projects)[0]
+            return (projects_exact_match + projects_starting_with)[0]
         except IndexError:
             raise TogglNotFoundError('No project name starts with {}'.format(project_name_prefix))
 
